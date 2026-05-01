@@ -1,113 +1,347 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Archita's Portfolio</title>
-
+    <title>ArchitaPorov ~ zsh</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="logo.png">
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
   </head>
-
   <body>
-    <!-- Navigation -->
-    <nav class="header-nav">
-      <ul class="nav-list">
-        <li><a href="#about">About Me</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+    <!-- Functional Nav -->
+    <nav class="nav-bar">
+      <div class="nav-content">
+        <span class="nav-brand">archita@vit-vellore:~$</span>
+        <div class="nav-links">
+          <a href="#about">[01] About</a>
+          <a href="#skills">[02] Skills</a>
+          <a href="#experience">[03] Experience</a>
+          <a href="#projects">[04] Projects</a>
+          <a href="#contact">[05] Contact</a>
+        </div>
+      </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-section" id="home">
-      <h1>👋 Hey there, I'm Archita!</h1>
-      <p>
-        Software Engineering student passionate about Web Development & Software
-        Engineering
-      </p>
-    </section>
-
-    <!-- About Me -->
-    <section class="about-section" id="about">
-      <h2>About Me</h2>
-      <ul>
-        <li>🎓 Software Engineering student at VIT</li>
-        <li>💻 Passionate about Web Development and Software Engineering</li>
-        <li>
-          🧠 Currently learning Data Structures & Algorithms (DSA), Advanced Web
-          Development (React.js, APIs), Cloud deployment (Netlify, Render)
-        </li>
-        <li>📫 Always eager to collaborate and grow as a developer</li>
-      </ul>
-    </section>
-
-    <!-- Skills -->
-    <section class="skills-section" id="skills">
-      <h2>My Skills</h2>
-      <div class="skills-list">
-        <span class="skill-badge">Java (Swing, Backend)</span>
-        <span class="skill-badge">HTML</span>
-        <span class="skill-badge">CSS</span>
-        <span class="skill-badge">JavaScript</span>
-        <span class="skill-badge">PHP</span>
-        <span class="skill-badge">MySQL</span>
-        <span class="skill-badge">Python</span>
-        <span class="skill-badge">C++</span>
-        <span class="skill-badge">Perl</span>
-        <span class="skill-badge">React.js (Learning)</span>
-        <span class="skill-badge">Cloud Deployment</span>
+    <div class="terminal-window">
+      <div class="title-bar">
+        <div class="controls">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+        </div>
+        <div class="tab-title">archita@vit-vellore: ~/portfolio</div>
       </div>
-    </section>
 
-    <!-- Projects -->
-    <section class="projects-section" id="projects">
-      <h2>Projects</h2>
+      <main class="content">
+        <!-- HERO SECTION -->
+        <section id="about" class="command-block">
+          <p class="prompt">
+            <span class="user">archita@vit</span>:<span class="path">~</span>$
+            whoami --full
+          </p>
+          <div class="response">
+            <h1 class="glitch-text">ARCHITA POROV</h1>
+            <p class="role">
+              AI & Full-Stack Developer | Integrated M.Tech Software Engineering
+            </p>
+            <p class="bio">
+              I am a pre-final year Integrated M.Tech student at VIT Vellore,
+              currently maintaining a 9.68 CGPA and ranked 3rd in my academic
+              branch. My expertise lies in Java Full-Stack development, where I
+              focus on building functional and stable backend architectures
+              using Spring Boot and MySQL. I am passionate about software
+              engineering and dedicated to developing efficient, real-world
+              applications through clean code and collaborative problem-solving.
+            </p>
+            <div class="cta-row">
+              <a href="#projects" class="btn">[ ./view_projects.sh ]</a>
+              <a href="#contact" class="btn">[ ./contact_me.py ]</a>
+            </div>
+          </div>
+        </section>
 
-      <div class="project-item">
-        <h3>✈️ Airline Reservation System</h3>
-        <p class="project-desc">
-          Java Swing GUI application with backend logic for managing bookings.
+        <!-- SKILLS SECTION -->
+        <section id="skills" class="command-block">
+          <p class="prompt">
+            <span class="user">archita@vit</span>:<span class="path">~</span>$
+            ls --classify /skills
+          </p>
+          <div class="tech-grid">
+            <div class="tech-card cyan">
+              <h3>Languages</h3>
+              <ul>
+                <li>Java</li>
+                <li>Python</li>
+                <li>C++</li>
+                <li>SQL</li>
+              </ul>
+            </div>
+            <div class="tech-card magenta">
+              <h3>Frameworks & Backend</h3>
+              <ul>
+                <li>Spring Boot</li>
+                <li>Spring Security</li>
+                <li>Thymeleaf</li>
+                <li>Web Sockets & STOMP</li>
+                <li>JPA/Hibernate</li>
+              </ul>
+            </div>
+            <div class="tech-card yellow">
+              <h3>Databases & Tools</h3>
+              <ul>
+                <li>MySQL</li>
+                <li>Git/GitHub</li>
+                <li>MongoDB</li>
+                <li>Maven</li>
+              </ul>
+            </div>
+            <div class="tech-card green">
+              <h3>Infra & OS</h3>
+              <ul>
+                <li>Linux (Ubuntu)</li>
+                <li>VMware ESXi</li>
+                <li>Docker</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- EXPERIENCE SECTION -->
+        <section id="experience" class="command-block">
+          <p class="prompt">
+            <span class="user">archita@vit</span>:<span class="path">~</span>$
+            cat experience.log
+          </p>
+          <div class="response">
+            <div class="exp-entry">
+              <span class="accent-y">[Nov 2025 - Jan 2026]</span>
+              <p>
+                <strong>Java Development Intern @ Infosys Springboard</strong>
+              </p>
+              <p>
+                During my virtual Java development internship at Infosys
+                Springboard from November 2025 to January 2026, I worked on the
+                "TimeIt" project. My focus was on utilizing the Spring Boot
+                framework to build the application and managing data using
+                MySQL. Throughout the development process, I collaborated with a
+                mentor to discuss technical challenges and resolve white label
+                errors to ensure the application functioned correctly.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- CERTIFICATIONS SECTION -->
+        <section id="certs" class="command-block">
+          <p class="prompt">
+            <span class="user">archita@vit</span>:<span class="path">~</span>$
+            grep certifications.txt
+          </p>
+          <div class="response achievement-box">
+            <p>
+              <span class="accent-g">[+]</span> IBM Certified: Machine Learning
+              with Python (May 2025)
+            </p>
+            <p>
+              <span class="accent-g">[+]</span> IBM Certified: SQL & Relational
+              Databases (May 2025)
+            </p>
+            <p>
+              <span class="accent-g">[+]</span> AWS Certified: Cloud
+              Practitioner (Apr 2026)
+            </p>
+            <p>
+              <span class="accent-g">[+]</span> Linux Certified: Linux
+              Foundations LFS101 (Mar 2026)
+            </p>
+          </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section id="projects" class="command-block">
+          <p class="prompt">
+            <span class="user">archita@vit</span>:<span class="path">~</span>$
+            ./list_projects.sh --grid
+          </p>
+          <div class="project-auto-grid">
+            <div class="p-item">
+              <div class="p-header">CATCHUP.exe</div>
+              <div class="p-img-container">
+                <img
+                  src="https://github.com/ArchieP27/catchup/raw/main/screenshots/ui.png"
+                  alt="CatchUp Chat"
+                />
+              </div>
+              <div class="p-body">
+                <p class="p-title">CatchUp Chat Engine</p>
+                <p class="p-desc">
+                  Real-time WebSocket platform for low-latency communication.
+                </p>
+                <div class="p-tech">Stack: Java, Spring Boot, STOMP</div>
+                <a href="https://github.com/ArchieP27/catchup" class="p-link"
+                  >>> View_Source</a
+                >
+              </div>
+            </div>
+
+            <div class="p-item">
+              <div class="p-header">NOVACITY.bin</div>
+              <div class="p-img-container">
+                <img
+                  src="https://github.com/ArchieP27/NovaCity/raw/main/assets/banner.png"
+                  alt="Nova City"
+                />
+              </div>
+              <div class="p-body">
+                <p class="p-title">Nova City Portal</p>
+                <p class="p-desc">
+                  Smart portal featuring ML classification and data analytics.
+                </p>
+                <div class="p-tech">Stack: ML, Python, Spring Boot</div>
+                <a href="https://github.com/ArchieP27/NovaCity" class="p-link"
+                  >>> View_Source</a
+                >
+              </div>
+            </div>
+
+            <div class="p-item">
+              <div class="p-header">TIMEIT.dll</div>
+              <div class="p-img-container">
+                <img
+                  src="https://github.com/ArchieP27/TimeIt---TaskReminderApp/raw/main/screenshots/landing.png"
+                  alt="TimeIt Task Manager"
+                />
+              </div>
+              <div class="p-body">
+                <p class="p-title">TimeIt Task Manager</p>
+                <p class="p-desc">
+                  Efficient task management system with optimized backend
+                  persistence.
+                </p>
+                <div class="p-tech">Stack: Java, Spring Boot, JPA</div>
+                <a href="https://github.com/ArchieP27/TimeIt" class="p-link"
+                  >>> View_Source</a
+                >
+              </div>
+            </div>
+
+            <div class="p-item">
+              <div class="p-header">TRAVELIMMERSE.dmg</div>
+              <div class="p-img-container">
+                <img
+                  src="https://github.com/ArchieP27/TravelImmerse/raw/main/screenshots/home.png"
+                  alt="Travel Immerse"
+                />
+              </div>
+              <div class="p-body">
+                <p class="p-title">Travel Immerse</p>
+                <p class="p-desc">
+                  All-in-one immersive travel planning and booking experience.
+                </p>
+                <div class="p-tech">Stack: PHP, MySQL, HTML, CSS, JS</div>
+                <a
+                  href="https://github.com/ArchieP27/TravelImmerse"
+                  class="p-link"
+                  >>> View_Source</a
+                >
+              </div>
+            </div>
+
+            <div class="p-item">
+              <div class="p-header">HEARTDISEASEPREDICTOR.sh</div>
+              <div class="p-img-container">
+                <img
+                  src="https://github.com/ArchieP27/HeartDiseasePredictor-Java/raw/main/screenshots/UI.jpg"
+                  alt="Heart Disease Predictor"
+                />
+              </div>
+              <div class="p-body">
+                <p class="p-title">Heart Disease Predictor</p>
+                <p class="p-desc">
+                  Machine learning model for predicting heart disease risk.
+                </p>
+                <div class="p-tech">Stack: Java Swing, ML, Weka</div>
+                <a
+                  href="https://github.com/ArchieP27/HeartDiseasePredictor-Java"
+                  class="p-link"
+                  >>> View_Source</a
+                >
+              </div>
+            </div>
+
+            <div class="p-item">
+              <div class="p-header">AIRLINERESERVATION.enc</div>
+              <div class="p-img-container">
+                <img
+                  src="https://github.com/ArchieP27/AirlineReservationSystem-Java/raw/main/screenshots/search.png"
+                  alt="Airline Reservation"
+                />
+              </div>
+              <div class="p-body">
+                <p class="p-title">Airline Reservation Application</p>
+                <p class="p-desc">
+                  A simple java based application for managing airline
+                  reservations.
+                </p>
+                <div class="p-tech">Stack: Java, Java Swing, MySQL</div>
+                <a
+                  href="https://github.com/ArchieP27/AirlineReservationSystem-Java"
+                  class="p-link"
+                  >>> View_Source</a
+                >
+              </div>
+            </div>
+
+            <div class="p-item">
+              <div class="p-header">STACKEDTHOUGHTS.core</div>
+              <div class="p-img-container">
+                <img
+                  src="https://github.com/ArchieP27/StackedThoughts-BootStrapDesign/raw/main/ss1.png"
+                  alt="Stacked Thoughts"
+                />
+              </div>
+              <div class="p-body">
+                <p class="p-title">Stacked Thoughts</p>
+                <p class="p-desc">
+                  A blog site made with Bootstrap and a responsive design format
+                </p>
+                <div class="p-tech">
+                  Stack: HTML, CSS, JavaScript, Bootstrap
+                </div>
+                <a
+                  href="https://github.com/ArchieP27/StackedThoughts-BootStrapDesign"
+                  class="p-link"
+                  >>> View_Source</a
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <div class="terminal-footer-quote">
+        <p class="quote-text">
+          "In a world of variables, be the constant that solves the problem."
         </p>
-        <p class="project-tech">Tech: Java (Swing)</p>
-      </div>
-
-      <div class="project-item">
-        <h3>🌍 Travel Immerse Website</h3>
-        <p class="project-desc">
-          A front-end responsive travel website built using HTML, CSS,
-          JavaScript, and PHP.
+        <p class="status-line">
+          <span class="accent-g">●</span> All systems operational. Press
+          [Ctrl+C] to exit.
         </p>
-        <p class="project-tech">Tech: HTML, CSS, JS, PHP</p>
       </div>
 
-      <div class="project-item">
-        <h3>🛡️ Ransomware Detector</h3>
-        <p class="project-desc">
-          Python script to detect suspicious file encryption behaviors.
+      <footer id="contact" class="terminal-footer">
+        <p>
+          System Online: 2026-05-01 |
+          <a href="mailto:porovarchita0803@gmail.com">Email</a> |
+          <a href="https://github.com/ArchieP27">GitHub</a> |
+          <a href="https://www.linkedin.com/in/architaporov">LinkedIn</a>
         </p>
-        <p class="project-tech">Tech: Python</p>
-      </div>
-    </section>
+      </footer>
+    </div>
 
-    <!-- Contact -->
-    <section class="about-section" id="contact" style="text-align: center">
-      <h2>Let's Connect!</h2>
-      <p>Find me on:</p>
-      <p>
-        <a href="https://www.linkedin.com/in/architaporov" target="_blank"
-          >LinkedIn</a
-        >
-        |
-        <a href="https://github.com/archiep27" target="_blank">GitHub</a>
-      </p>
-    </section>
-
-    <footer>&copy; 2025 Archita | Built with ❤️ and Sky Blue vibes</footer>
   </body>
 </html>
