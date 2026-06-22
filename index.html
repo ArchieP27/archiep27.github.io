@@ -12,16 +12,50 @@
     />
   </head>
   <body>
+    <script src="script.js"></script>
     <!-- Functional Nav -->
     <nav class="nav-bar">
       <div class="nav-content">
-        <span class="nav-brand">archita@vit-vellore:~$</span>
+        <!-- Brand / Prompt -->
+        <span
+          class="nav-brand"
+          id="nav-toggler"
+          role="button"
+          tabindex="0"
+          aria-expanded="false"
+        >
+          <svg
+            class="hamburger-icon"
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            aria-hidden="true"
+          >
+            <rect x="3" y="6" width="18" height="2" rx="1"></rect>
+            <rect x="3" y="11" width="18" height="2" rx="1"></rect>
+            <rect x="3" y="16" width="18" height="2" rx="1"></rect>
+          </svg>
+          <span class="brand-text">archita@portfolio:~$</span>
+        </span>
+
+        <!-- Navigation Links -->
         <div class="nav-links">
           <a href="#about">[01] About</a>
           <a href="#skills">[02] Skills</a>
           <a href="#experience">[03] Experience</a>
           <a href="#projects">[04] Projects</a>
           <a href="#contact">[05] Contact</a>
+        </div>
+
+        <!-- Theme Switcher (The new part) -->
+        <div class="theme-menu">
+          <span class="theme-label">[#] Themes</span>
+          <div class="theme-options">
+            <button onclick="runCmd('theme default')">Dracula</button>
+            <button onclick="runCmd('theme solarized')">Solarized</button>
+            <button onclick="runCmd('theme matrix')">Matrix</button>
+            <button onclick="runCmd('theme hacker')">Hacker</button>
+          </div>
         </div>
       </div>
     </nav>
@@ -33,15 +67,51 @@
           <span class="dot yellow"></span>
           <span class="dot green"></span>
         </div>
-        <div class="tab-title">archita@vit-vellore: ~/portfolio</div>
+        <div class="tab-title">archita@portfolio: ~/portfolio</div>
+      </div>
+
+      <div class="command-input-area">
+        <div class="terminal-controls-row">
+          <!-- Left: Input Group -->
+          <div class="input-group">
+            <span class="user">guest@archita</span>:<span class="path">~</span>$
+            <input
+              type="text"
+              id="terminal-input"
+              autofocus
+              autocomplete="off"
+              placeholder="type 'help'..."
+            />
+          </div>
+
+          <!-- Right: Hints -->
+          <div class="command-hints">
+            <span class="hint-label">Quick Links:</span>
+            <span class="hint-item" onclick="runCmd('about')">[ about ]</span>
+            <span class="hint-item" onclick="runCmd('skills')">[ skills ]</span>
+            <span class="hint-item" onclick="runCmd('experience')"
+              >[ experience ]</span
+            >
+            <span class="hint-item" onclick="runCmd('projects')"
+              >[ projects ]</span
+            >
+            <span class="hint-item" onclick="runCmd('contact')"
+              >[ contact ]</span
+            >
+          </div>
+        </div>
+
+        <!-- Error Message (Hidden by default) -->
+        <div id="terminal-error" class="error-msg"></div>
       </div>
 
       <main class="content">
         <!-- HERO SECTION -->
         <section id="about" class="command-block">
           <p class="prompt">
-            <span class="user">archita@vit</span>:<span class="path">~</span>$
-            whoami --full
+            <span class="user">archita@portfolio</span>:<span class="path"
+              >~</span
+            >$ whoami --full
           </p>
           <div class="response">
             <h1 class="glitch-text">ARCHITA POROV</h1>
@@ -49,17 +119,16 @@
               AI & Full-Stack Developer | Integrated M.Tech Software Engineering
             </p>
             <p class="bio about-descp">
-              I am a pre-final year Integrated M.Tech student at VIT Vellore,
-              currently maintaining a 9.68 CGPA and ranked 3rd in my academic
-              branch. My expertise lies in Java Full-Stack development, where I
-              focus on building functional and stable backend architectures
-              using Spring Boot and MySQL. I am passionate about software
-              engineering and dedicated to developing efficient, real-world
-              applications through clean code and collaborative problem-solving.
+              I am an Integrated M.Tech student in Software Engineering with a
+              strong focus on building dependable full-stack applications. My
+              expertise includes Java backend development (Spring Boot, JPA),
+              database design, and practical machine learning integrations. I
+              enjoy designing clean, maintainable systems and collaborating on
+              projects that solve real-world problems.
             </p>
             <div class="cta-row">
-              <a href="#projects" class="btn">[ ./view_projects.sh ]</a>
-              <a href="#contact" class="btn">[ ./contact_me.py ]</a>
+              <a href="#projects" class="btn-main">[ ./view_projects.sh ]</a>
+              <a href="#contact" class="btn-main">[ ./contact_me.py ]</a>
             </div>
           </div>
         </section>
@@ -67,8 +136,9 @@
         <!-- SKILLS SECTION -->
         <section id="skills" class="command-block">
           <p class="prompt">
-            <span class="user">archita@vit</span>:<span class="path">~</span>$
-            ls --classify /skills
+            <span class="user">archita@portfolio</span>:<span class="path"
+              >~</span
+            >$ ls --classify /skills
           </p>
           <div class="tech-grid">
             <div class="tech-card cyan">
@@ -113,8 +183,9 @@
         <!-- EXPERIENCE SECTION -->
         <section id="experience" class="command-block">
           <p class="prompt">
-            <span class="user">archita@vit</span>:<span class="path">~</span>$
-            cat experience.log
+            <span class="user">archita@portfolio</span>:<span class="path"
+              >~</span
+            >$ cat experience.log
           </p>
           <div class="response">
             <div class="exp-entry">
@@ -138,34 +209,42 @@
         <!-- CERTIFICATIONS SECTION -->
         <section id="certs" class="command-block">
           <p class="prompt">
-            <span class="user">archita@vit</span>:<span class="path">~</span>$
-            grep certifications.txt
+            <span class="user">archita@portfolio</span>:<span class="path"
+              >~</span
+            >$ grep certifications.txt
           </p>
+
           <div class="response achievement-box">
-            <p>
-              <span class="accent-g">[+]</span> IBM Certified: Machine Learning
-              with Python (May 2025)
-            </p>
-            <p>
-              <span class="accent-g">[+]</span> IBM Certified: SQL & Relational
-              Databases (May 2025)
-            </p>
-            <p>
-              <span class="accent-g">[+]</span> AWS Certified: Cloud
-              Practitioner (Apr 2026)
-            </p>
-            <p>
-              <span class="accent-g">[+]</span> Linux Certified: Linux
-              Foundations LFS101 (Mar 2026)
-            </p>
+            <div class="cert-grid">
+              <article class="cert-card">
+                <div class="cert-title">Machine Learning with Python</div>
+                <div class="cert-meta">IBM • May 2025</div>
+              </article>
+
+              <article class="cert-card">
+                <div class="cert-title">SQL & Relational Databases</div>
+                <div class="cert-meta">IBM • May 2025</div>
+              </article>
+
+              <article class="cert-card">
+                <div class="cert-title">AWS Cloud Practitioner</div>
+                <div class="cert-meta">Amazon Web Services • Apr 2026</div>
+              </article>
+
+              <article class="cert-card">
+                <div class="cert-title">Linux Foundations (LFS101)</div>
+                <div class="cert-meta">Linux Foundation • Mar 2026</div>
+              </article>
+            </div>
           </div>
         </section>
 
         <!-- PROJECTS SECTION -->
         <section id="projects" class="command-block">
           <p class="prompt">
-            <span class="user">archita@vit</span>:<span class="path">~</span>$
-            ./list_projects.sh --grid
+            <span class="user">archita@portfolio</span>:<span class="path"
+              >~</span
+            >$ ./list_projects.sh --grid
           </p>
           <div class="project-auto-grid">
             <div class="p-item">
@@ -335,14 +414,87 @@
 
       <footer id="contact" class="terminal-footer">
         <p>
-          System Online: 2026-05-01 |
+          System Online: <span id="system-date"></span> |
           <a href="mailto:porovarchita0803@gmail.com">Email</a> |
           <a href="https://github.com/ArchieP27">GitHub</a> |
           <a href="https://www.linkedin.com/in/architaporov">LinkedIn</a>
         </p>
       </footer>
     </div>
+    <script>
+      // Update system date in footer
+      function updateSystemDate() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, "0");
+        const day = String(now.getDate()).padStart(2, "0");
+        const hours = String(now.getHours()).padStart(2, "0");
+        const minutes = String(now.getMinutes()).padStart(2, "0");
+        const seconds = String(now.getSeconds()).padStart(2, "0");
+        document.getElementById("system-date").textContent =
+          `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+      }
+      updateSystemDate();
+      setInterval(updateSystemDate, 1000); // Update every second
 
-    <script src="script.js" defer></script>
+      // Mobile navigation toggle
+      (function () {
+        const toggler = document.getElementById("nav-toggler");
+        const navBar = document.querySelector(".nav-bar");
+        const navLinks = document.querySelector(".nav-links");
+        if (!toggler || !navBar || !navLinks) return;
+
+        function setExpanded(val) {
+          if (val) {
+            navBar.classList.add("expanded");
+            toggler.setAttribute("aria-expanded", "true");
+            navLinks.style.maxHeight = navLinks.scrollHeight + "px";
+          } else {
+            navBar.classList.remove("expanded");
+            toggler.setAttribute("aria-expanded", "false");
+            navLinks.style.maxHeight = null;
+          }
+        }
+
+        toggler.addEventListener("click", function (e) {
+          e.stopPropagation();
+          setExpanded(!navBar.classList.contains("expanded"));
+        });
+
+        toggler.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            setExpanded(!navBar.classList.contains("expanded"));
+          }
+        });
+
+        // Auto-collapse when a nav link is clicked (good for mobile)
+        const navAnchors = Array.from(navLinks.querySelectorAll("a"));
+        navAnchors.forEach((a) =>
+          a.addEventListener("click", function () {
+            // small delay so the link navigation/scroll can start
+            setTimeout(() => setExpanded(false), 80);
+          }),
+        );
+
+        // Also collapse when quick hint items are clicked
+        const hintItems = Array.from(document.querySelectorAll(".hint-item"));
+        hintItems.forEach((h) =>
+          h.addEventListener("click", function () {
+            setTimeout(() => setExpanded(false), 20);
+          }),
+        );
+
+        // Close when clicking outside the nav on small screens
+        document.addEventListener("click", function (e) {
+          if (
+            !navBar.contains(e.target) &&
+            navBar.classList.contains("expanded")
+          ) {
+            setExpanded(false);
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
