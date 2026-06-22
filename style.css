@@ -1,3 +1,4 @@
+/* [DEFAULT THEME] - Your Current Setup */
 :root {
   --bg: #0a0b10;
   --win-bg: #11121d;
@@ -8,6 +9,60 @@
   --accent-y: #ffcb6b;
   --accent-g: #c3e88d;
   --border: #292d3e;
+  --nav-bg: #0d0e14;
+}
+
+/* [SOLARIZED THEME] */
+[data-theme="solarized"] {
+  --bg: #fdf6e3;
+  --win-bg: #eee8d5;
+  --text: #586e75;
+  --user: #268bd2;
+  --path: #cb4b16;
+  --cmd: #d33682;
+  --accent-y: #b58900;
+  --accent-g: #859900;
+  --border: #dcd7ba;
+  --nav-bg: #e5dfc9;
+}
+
+/* [MATRIX THEME] */
+[data-theme="matrix"] {
+  --bg: #000000;
+  --win-bg: #050505;
+  --text: #00ff41;
+  --user: #00ff41;
+  --path: #008f11;
+  --cmd: #00ff41;
+  --accent-y: #00ff41;
+  --accent-g: #00ff41;
+  --border: #003b00;
+  --nav-bg: #000000;
+}
+
+/* [HACKER THEME] - High Contrast Blue/Cyan */
+[data-theme="hacker"] {
+  --bg: #020202;
+  --win-bg: #0a0a0c;
+  --text: #00d4ff;
+  --user: #00d4ff;
+  --path: #005f73;
+  --cmd: #94d2bd;
+  --accent-y: #e9d8a6;
+  --accent-g: #00d4ff;
+  --border: #0a9396;
+  --nav-bg: #050505;
+}
+
+/* General Body Styling */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Fira Code", monospace;
+  padding: 100px 40px 40px 40px;
+  transition:
+    background 0.4s ease,
+    color 0.4s ease; /* Smooth transition when swapping */
 }
 
 * {
@@ -16,11 +71,91 @@
   padding: 0;
   scroll-behavior: smooth;
 }
-body {
-  background: var(--bg);
-  color: var(--text);
+
+/* Layout Adjustment */
+.nav-content {
+  display: flex;
+  justify-content: space-between; /* Pushes brand, links, and theme menu apart */
+  align-items: center;
+  width: 100%;
+  padding: 0 20px;
+}
+
+/* Theme Menu Styling */
+.theme-menu {
+  position: relative;
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid transparent;
   font-family: "Fira Code", monospace;
-  padding: 100px 40px 40px 40px;
+  font-size: 0.85rem;
+}
+
+.theme-label {
+  color: var(--accent-y);
+  transition: color 0.3s;
+}
+
+.theme-menu:hover .theme-label {
+  color: var(--accent-g);
+}
+
+/* Dropdown Content */
+.theme-options {
+  display: none; /* Hidden by default */
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: var(--nav-bg);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  min-width: 120px;
+  z-index: 100;
+}
+
+.theme-menu:hover .theme-options {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Styling for the active button in the dropdown */
+.theme-options button.active-theme {
+  color: var(--accent-g); /* Highlights with your theme's green */
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.theme-options button.active-theme::before {
+  content: "> ";
+  color: var(--accent-g);
+}
+
+/* Ensure the dropdown labels look consistent */
+.theme-options button {
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.theme-options button:hover {
+  border-left: 3px solid var(--accent-m);
+  padding-left: 12px;
+}
+
+.theme-options button {
+  background: var(--cmd);
+  border: none;
+  color: var(--text);
+  padding: 10px;
+  text-align: left;
+  font-family: "Fira Code", monospace;
+  font-size: 0.8rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+.theme-options button:hover {
+  background: var(--border);
+  color: var(--accent-g);
 }
 
 .nav-bar {
@@ -43,6 +178,44 @@ body {
 .nav-brand {
   color: var(--user);
   font-weight: bold;
+}
+
+/* Make brand toggler accessible and obvious on all screens */
+.nav-brand {
+  cursor: pointer;
+}
+
+/* Hamburger icon inside brand */
+.hamburger-icon rect {
+  fill: var(--user);
+}
+.brand-text {
+  margin-left: 10px;
+  font-family: "Fira Code", monospace;
+}
+
+/* Hide hamburger on larger screens; show only on mobile */
+.hamburger-icon {
+  display: none;
+}
+
+/* On small screens, show only the hamburger to save space */
+@media (max-width: 600px) {
+  .brand-text {
+    display: none;
+  }
+  .hamburger-icon {
+    transform-origin: center;
+    display: inline-block;
+  }
+}
+
+/* Ensure nav-links transitions are smooth when toggled on mobile */
+.nav-links {
+  transition:
+    max-height 280ms ease,
+    opacity 220ms ease;
+  overflow: hidden;
 }
 .nav-links a {
   color: var(--text);
@@ -130,7 +303,7 @@ body {
   color: #a6accd;
   line-height: 1.6;
 }
-.btn {
+.btn-main {
   display: inline-block;
   border: 1px solid var(--user);
   padding: 10px 20px;
@@ -139,6 +312,11 @@ body {
   color: var(--user);
   text-decoration: none;
   font-size: 0.85rem;
+}
+
+.btn-main:hover {
+  background: var(--user);
+  color: #11121d;
 }
 
 .tech-grid {
@@ -151,6 +329,12 @@ body {
   border: 1px solid var(--border);
   background: rgba(255, 255, 255, 0.02);
 }
+
+.tech-card:hover {
+  scale: 1.05;
+  box-shadow: 0 10px 20px #89ddff33;
+}
+
 .tech-card h3 {
   color: #fff;
   margin-bottom: 10px;
@@ -182,6 +366,11 @@ body {
 .p-item {
   border: 1px solid var(--border);
   background: #161724;
+}
+.p-item:hover {
+  scale: 1.05;
+  border: 1px solid var(--accent-g);
+  background: #1b1c29;
 }
 .p-header {
   background: var(--border);
@@ -227,6 +416,73 @@ body {
   font-size: 0.8rem;
 }
 
+/* Unified hover / focus UI for clickable elements */
+a,
+.p-link,
+.nav-links a,
+.hint-item,
+.btn-main,
+.p-item,
+.tech-card,
+.cert-card,
+.nav-brand,
+.theme-options button {
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease,
+    color 0.15s ease;
+  cursor: pointer;
+}
+
+.nav-links a:hover,
+.nav-links a:focus,
+.p-link:hover,
+.p-link:focus,
+.hint-item:hover,
+.hint-item:focus {
+  color: var(--user);
+  transform: translateY(-3px);
+}
+
+.btn-main:hover,
+.btn-main:focus {
+  background: var(--user);
+  color: var(--win-bg);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.tech-card:hover,
+.tech-card:focus {
+  transform: scale(1.03);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  border-color: var(--accent-g);
+}
+
+/* Make project card hover stronger but keep existing behaviour */
+.p-item:hover,
+.p-item:focus {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+}
+
+.cert-card:focus,
+.cert-card:focus-visible {
+  outline: 3px solid var(--accent-g);
+  outline-offset: 4px;
+}
+
+a:focus-visible,
+.btn-main:focus-visible,
+.p-link:focus-visible,
+.hint-item:focus-visible,
+.tech-card:focus-visible,
+.p-item:focus-visible {
+  outline: 3px solid var(--accent-g);
+  outline-offset: 4px;
+}
+
 .accent-g {
   color: var(--accent-g);
 }
@@ -251,6 +507,38 @@ body {
   padding: 40px 20px;
   border-top: 1px dashed var(--border);
   margin-top: 40px;
+}
+
+/* Certifications grid/cards */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  align-items: start;
+}
+.cert-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  padding: 18px;
+  border-radius: 8px;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+.cert-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  border-color: var(--accent-g);
+}
+.cert-title {
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+.cert-meta {
+  font-size: 0.8rem;
+  color: #a6accd;
 }
 
 .quote-text {
@@ -323,18 +611,57 @@ body {
     font-size: 15px;
   }
 
-  .nav-content {
-    padding: 0 12px;
+  /* Stack terminal input and quick-hints on small screens to prevent overflow */
+  .terminal-controls-row {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 8px;
   }
 
-  .nav-links {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
+  .command-hints {
+    overflow-x: auto; /* Allow horizontal scroll if hints overflow */
+  }
+
+  .hint-label {
+    display: none; /* hide label to save space */
+  }
+
+  .hint-item {
+    padding: 6px 8px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--cmd);
+  }
+
+  /* Keep header content on a single row: hamburger left, theme right */
+  .nav-content {
+    padding: 0 12px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     gap: 8px;
+    position: relative; /* for absolute nav-links */
+  }
+
+  /* On mobile, nav links are an absolute, full-width vertical stack below header */
+  .nav-links {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    background: var(--nav-bg);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 12px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    z-index: 999;
+    transition:
+      max-height 260ms ease,
+      opacity 200ms ease;
   }
 
   .nav-links a {
@@ -362,15 +689,6 @@ body {
 
   .bio {
     font-size: 0.95rem;
-  }
-
-  .btn {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-    margin-right: 0;
-    margin-top: 12px;
-    text-align: center;
   }
 
   .tech-grid {
@@ -414,19 +732,8 @@ body {
   }
 
   .nav-brand::before {
-    content: "";
-    position: absolute;
-    left: 6px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 18px;
-    height: 2px;
-    background: var(--text);
-    border-radius: 2px;
-    box-shadow:
-      0 6px 0 var(--text),
-      0 -6px 0 var(--text);
-    transition: transform 220ms ease;
+    /* hide legacy pseudo hamburger when using the SVG */
+    display: none;
   }
 
   .nav-links {
@@ -458,6 +765,24 @@ body {
   }
 }
 
+/* When nav is expanded on mobile, ensure vertical stacking and visible */
+.nav-bar.expanded .nav-links {
+  max-height: 1000px; /* large enough for content */
+  opacity: 1;
+}
+
+/* Place theme menu next to hamburger on mobile */
+@media (max-width: 600px) {
+  .theme-menu {
+    margin-left: 12px;
+    order: 2;
+    margin-right: 8px;
+  }
+  .nav-links {
+    order: 3;
+  }
+}
+
 .nav-bar.expanded .nav-links {
   max-height: 420px;
   opacity: 1;
@@ -486,9 +811,137 @@ body {
   }
 }
 
+/* Strong mobile override to ensure nav links stack vertically under header */
+@media (max-width: 600px) {
+  .nav-bar .nav-content {
+    position: relative;
+  }
+  .nav-bar .nav-links {
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    padding: 10px 12px !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+    background: var(--nav-bg) !important;
+    border-bottom: 1px solid var(--border) !important;
+    z-index: 1100;
+  }
+  .nav-bar.expanded .nav-links {
+    max-height: 1000px !important;
+    opacity: 1 !important;
+  }
+}
+
 .p-img-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+body::after {
+  content: " ";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
+    linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.03),
+      rgba(0, 255, 0, 0.01),
+      rgba(0, 0, 255, 0.03)
+    );
+  background-size:
+    100% 3px,
+    3px 100%;
+  pointer-events: none;
+  z-index: 2000;
+}
+
+.glitch-text:hover {
+  text-shadow:
+    2px 0 red,
+    -2px 0 cyan;
+  animation: glitch 0.3s infinite;
+}
+
+.command-input-area {
+  padding: 15px 25px 8px;
+  background: #161724;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.terminal-controls-row {
+  display: flex;
+  justify-content: space-between; /* Pushes input left, hints right */
+  align-items: center;
+  gap: 20px;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1; /* Lets input take up available space */
+}
+
+#terminal-input {
+  background: transparent;
+  border: none;
+  color: var(--accent-g);
+  font-family: "Fira Code", monospace;
+  font-size: 0.95rem;
+  outline: none;
+  width: 100%;
+}
+
+.command-hints {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap; /* Prevents hints from wrapping to next line */
+}
+
+.hint-label {
+  font-size: 0.7rem;
+  color: #555;
+  text-transform: uppercase;
+}
+
+.hint-item {
+  font-size: 0.8rem;
+  color: var(--cmd);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.hint-item:hover {
+  color: var(--user);
+}
+
+/* Error Message Styling */
+.error-msg {
+  color: #ff5555; /* Terminal Red */
+  font-size: 0.85rem;
+  margin-top: 8px;
+  font-family: "Fira Code", monospace;
+  height: 0; /* No height when empty */
+  overflow: hidden;
+  transition: height 0.3s ease;
+}
+
+.error-msg.show {
+  height: 20px;
 }
